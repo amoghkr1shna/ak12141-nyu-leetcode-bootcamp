@@ -1,0 +1,3 @@
+If you push empty folders from local to global, it won't show up on GitHub because git doesn't recognize empty files.
+Don't worry about it though, run ls -la <name_of_empty_folder> and Bob's your uncle.
+
