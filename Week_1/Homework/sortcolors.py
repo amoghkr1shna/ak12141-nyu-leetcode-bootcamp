@@ -8,29 +8,35 @@ class Solution:
 
         while mid <=high:
             if nums[mid] == 0:
-                nums[low] = nums[low] + nums[mid]
-                nums[mid] = nums[low] - nums[mid]
-                nums[low] = nums[low] - nums[mid]
-                #swapping logic
-                # a = a+b
-                # b = a-b
-                # a = a-b
-                # we're swapping mid and low because we want 0s to be at the lower end of the array, which is to the left of mid
+                if low!=mid:
+                #adding this condition for 1 element arrays to avoid swapping with itself
+                    nums[low] = nums[low] + nums[mid]
+                    nums[mid] = nums[low] - nums[mid]
+                    nums[low] = nums[low] - nums[mid]
+                    #swapping logic
+                    # a = a+b
+                    # b = a-b
+                    # a = a-b
+                    # we're swapping mid and low because we want 0s to be at the lower end of the array, which is to the left of mid
                 low = low+1
                 mid = mid+1
+                #keep the index update outside the if condition since it's not explicitly related to the swap
             elif nums[mid] == 1:
                 mid = mid+1
                 #doing this basically to skip the 1 and keep it in place and move to the next index
             elif nums[mid] == 2:
-                nums[high] = nums[high] + nums[mid]
-                nums[mid] = nums[high] - nums[mid]
-                nums[high] = nums[high] - nums[mid]
-                #swapping logic
-                # we're swapping mid and high because we want 2s to be at the higher end of the array, which is to the right of mid
+                if high!=mid: #adding this condition for 1 element arrays to avoid swapping with itself
+                    nums[high] = nums[high] + nums[mid]
+                    nums[mid] = nums[high] - nums[mid]
+                    nums[high] = nums[high] - nums[mid]
+                    #swapping logic
+                    # we're swapping mid and high because we want 2s to be at the higher end of the array, which is to the right of mid
 
                 high = high-1
-                # we only update (or decrement high I should say) since we don't know what is to the right of mid, it could be anything
-                # this means we'd need to check the mid val again, which would be taken care of in the next iteration
+                    # we only update (or decrement high I should say) since we don't know what is to the right of mid, it could be anything
+                    # this means we'd need to check the mid val again, which would be taken care of in the next iteration
+                #keep the index update outside the if condition since it's not explicitly related to the swap
+
                 
 
 # this problem's also called the Dutch National Flag Problem
